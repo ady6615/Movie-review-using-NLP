@@ -16,8 +16,28 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# Try to download required NLTK data (harmless if already present)
+
+import nltk
+
 try:
+    nltk.data.find('tokenizers/punkt')
+except Exception:
+    nltk.download('punkt')
+try:
+    nltk.data.find('tokenizers/punkt_tab/english')
+except Exception:
+    # punkt_tab is required on some NLTK installs
+    nltk.download('punkt_tab')
+try:
+    nltk.data.find('corpora/stopwords')
+except Exception:
+    nltk.download('stopwords')
+try:
+    nltk.data.find('corpora/wordnet')
+except Exception:
+    nltk.download('wordnet')
+# Try to download required NLTK data (harmless if already present)
+'''try:
     nltk.data.find('tokenizers/punkt')
 except Exception:
     nltk.download('punkt')
@@ -29,7 +49,7 @@ try:
     nltk.data.find('corpora/wordnet')
 except Exception:
     nltk.download('wordnet')
-
+'''
 STOPWORDS = set(stopwords.words('english'))
 LEMMATIZER = WordNetLemmatizer()
 
